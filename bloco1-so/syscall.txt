@@ -14,9 +14,9 @@ Saída filtrada:
 #   O que está sendo escrito:
 #   Valor de retorno:
 
-fd:
-conteúdo:
-retorno:
+fd:1 
+conteúdo:"ola\n"
+retorno:4ola
 
 
 # PARTE B — Programa C com write() direto
@@ -24,11 +24,19 @@ retorno:
 # Cole aqui o código de syscall_direto.c que você escreveu:
 
 [código-fonte]
+#include <unistd.h>
+
+int main() {
+    const char msg[] = "Modo usuario -> kernel via write()\n";
+    write(1, msg, sizeof(msg) - 1);
+    return 0;
+}
 
 
 # Cole aqui a linha write(...) da saída de strace -o strace.txt ./syscall_direto:
 
 [saída do strace]
+write(1, "Modo usuario -> kernel via write"..., 35) = 3
 
 
 # PARTE C — Questões de síntese
@@ -37,7 +45,8 @@ retorno:
 #    Com base no que o strace revelou, explique com suas palavras como um programa
 #    de usuário consegue fazer I/O sem executar instruções privilegiadas diretamente.
 
-Resposta 1:
+Resposta 1:O programa não acessa o hardware diretamente. Ele usa o syscall (tipo write), que é tipo um “pedido” pro kernel fazer isso. 
+Quem realmente faz o I/O é o kernel, porque só ele tem permissão pra isso.
 
 
 # 2. Na apresentação sobre a genealogia do software, vimos que os programas de canal
@@ -45,4 +54,4 @@ Resposta 1:
 #    dispositivos, sem intervenção direta da CPU principal. Qual elemento do sistema 
 #    operacional moderno herda esse papel? 
 
-Resposta 2:
+Resposta 2:Hoje quem faz esse papel são os drivers de dispositivo junto com o kernel.
