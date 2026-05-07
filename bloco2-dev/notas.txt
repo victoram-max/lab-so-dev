@@ -4,39 +4,56 @@
 
 # FASE 1 — Pré-processador (gcc -E)
 # Quantas linhas tem soma.i? O que o pré-processador expandiu?
+757, ele expandiu o #include e o macros
 
 Linhas em soma.i:
-Observação:
+Observação: somente substitui o texto n o código da maquina
 
 
 # FASE 2 — Assembly (gcc -S)
 # Cole aqui 5 a 10 linhas de soma.s que você considera mais
 # interessantes e explique o que cada uma faz.
 
-Trecho de soma.s:
+Trecho de soma.s: 
+1-soma:
+2-li a0,7
+3-li a1,5
+4-call soma
+5-call printf
+6-addi sp,sp,-32
 
 Explicação:
-
+1-começar a função soma
+2-registrar 7 como a0
+3-registrar 5 como a1
+4-chama a função
+5-reserva espaço da memoria para a funçao
+6-mostra o resultado na tela
 
 # FASE 3 — Código objeto (gcc -c)
 # Cole a saída de: file soma.o
 
-file soma.o:
+file soma.o:ELF 64-bit LSB relocatable, UCB RISC-V, version 1 (SYSV), not stripped
 
 # Cole a saída de: nm soma.o
 
 nm soma.o:
+0000000000000000 r .LC0
+0000000000000028 T main
+                 U printf
+0000000000000000 T soma
+
 
 # Quais símbolos aparecem? O que significa o marcador "U" ao lado
 # de printf?
 
-Observação sobre nm:
+Observação sobre nm: indica indefinido esperando o ligador
 
 
 # FASE 4 — Ligação (gcc soma.o -o soma)
 # O que mudou após a ligação? Execute ./soma e registre a saída.
 
-Saída de ./soma:
+Saída de ./soma: 12
 
 
 # QUESTÕES DE SÍNTESE
@@ -45,10 +62,10 @@ Saída de ./soma:
 #    apresentação esse mesmo problema apareceu? O que o ligador
 #    faz com esse símbolo?
 
-Resposta 1:
+Resposta 1:o ligador conecta a chamada ao endereço da função resolvendo o problema
 
 
 # 2. Compare soma.i com soma.s: qual das duas saídas é análoga
 #    ao "código objeto" do montador histórico? Justifique.
 
-Resposta 2:
+Resposta 2:soma.s pois faz referencia direta ao código e o traduz o código em c para assembly
