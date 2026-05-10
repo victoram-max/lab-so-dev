@@ -9,7 +9,7 @@
 # No shell moderno, qual mecanismo cumpre papel equivalente?
 # Dê um exemplo concreto do que você usou nesta atividade.
 
-Resposta:
+Resposta:No shell Linux, um mecanismo equivalente ao JCL são os redirecionamentos e comandos do shell. por exemplo o gcc ola.c -o ola
 
 
 # ─────────────────────────────────────────────────────
@@ -21,11 +21,12 @@ Resposta:
 #    papel? Como o make sabe que não precisa recompilar um arquivo
 #    que não mudou?
 
-Resposta 1:
+Resposta 1:O sistema de dependências e a verificação da data de modificação dos arquivos.O make olha se algum arquivo foi 
+modificado depois da última compilação e se nada mudou, ele entende que não precisa recompilar tudo de novo.
 
 
 # 2. O monitor unificava "supervisor, carregador e rotinas de I/O
 #    sob uma interface textual". O que o Makefile unifica no fluxo
 #    de desenvolvimento moderno?
 
-Resposta 2:
+Resposta 2:O Makefile unifica a compilação, execução de comandos e organização das dependências
