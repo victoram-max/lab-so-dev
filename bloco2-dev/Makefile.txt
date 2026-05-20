@@ -18,4 +18,4 @@ clean:
 relatorio:
 	bash relatorio.sh > relatorio_build.txt
 
-.PHONY: clean
+.PHONY: clean relatorio
